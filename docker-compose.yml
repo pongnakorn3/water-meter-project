@@ -1,0 +1,30 @@
+version: '3.8'
+
+services: 
+  # ตั้งชื่อ Service ว่า db (Database)
+  db:
+    image: postgres:15-alpine
+    container_name: water_meter_db
+    restart: always
+    # กำหนด Username/Password สำหรับเข้าใช้ DB
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: watermeter
+    # เปิดประตู Port 5432 ให้ข้างนอกคุยได้
+    ports:
+      - "5432:5432"
+    # (Optional) Map ข้อมูลออกมาเก็บไว้ข้างนอก Container กันข้อมูลหายเวลารีสตาร์ท
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    restart: always
+    environment:
+      # อีเมลและรหัสผ่าน สำหรับ Login เข้าหน้าเว็บ pgAdmin (ตั้งอะไรก็ได้)
+      PGADMIN_DEFAULT_EMAIL: pongnakorn3@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: art2548
+    ports:
+      - "8080:80"

@@ -1,0 +1,20 @@
+# --- ไฟล์ขยะและไฟล์ขนาดใหญ่ ---
+node_modules/
+package-lock.json
+
+# --- ไฟล์ Database (จากรูปของคุณ) ---
+pgdata/
+
+# --- ไฟล์รูปภาพ ---
+uploads/
+processed-*/
+
+
+# --- ไฟล์ System ของคอมพิวเตอร์ ---
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# --- ไฟล์ความลับ ---
+.env
